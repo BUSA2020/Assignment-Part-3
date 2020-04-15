@@ -75,7 +75,7 @@ ORDER BY LastName;
 __________________________________________________________
 b:
 i)
-ii)
+ii) π LastName, FirstName σ Year=2010 (AllTourInfo) γ LastName, FirstName, Year
 iii)
 SELECT LastName, FirstName
 FROM AllTourInfo
@@ -84,7 +84,7 @@ ORDER BY LastName;
 __________________________________________________________
 c:
 i)
-ii)
+ii) π FirstName,LastName,ID σ Year<>2006(AllTourInfo) σ Year>2006(AllTourInfo) σ Year<2006(AllTourInfo) γ FirstName, LastName, ID, YEar
 iii)
 SELECT FirstName, LastName, ID
 FROM AllTourInfo
