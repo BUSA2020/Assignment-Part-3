@@ -64,9 +64,12 @@ HAVING COUNT(metabolism) > 1;
 __________________________________________________________
 __________________________________________________________
 Question 2:
+
 a:
-i)
+i) { a.LastName, a.FirstName | ∃ AllTourInfo (a) = coach = 'IS NULL' = a.LastName and a.FirstName}
+
 ii) π LastName, FirstName σ coach=IS NULL (AllTourInfo) γ LastName, FirstName, coach
+
 iii)
 SELECT LastName, FirstName
 FROM AllTourInfo
@@ -74,8 +77,11 @@ WHERE coach = IS NULL
 ORDER BY LastName;
 __________________________________________________________
 b:
-i)
+
+i) {a.LastName, a.FirstName | ∃ AllTourInfo (a) = (year=2006) = a.LastName}
+
 ii) π LastName, FirstName σ Year=2010 (AllTourInfo) γ LastName, FirstName, Year
+
 iii)
 SELECT LastName, FirstName
 FROM AllTourInfo
@@ -83,8 +89,12 @@ WHERE Year = 2010
 ORDER BY LastName;
 __________________________________________________________
 c:
-i)
-ii) π FirstName,LastName,ID σ Year<>2006(AllTourInfo) σ Year>2006(AllTourInfo) σ Year<2006(AllTourInfo) γ FirstName, LastName, ID, YEar
+
+i) {a.LastName, a.FirstName | ∃ AllTourInfo (a) and ∃ a.FirstName and ∃ a.LastName and ∃ a.ID = 
+a.year<>2006 and a.year<2006 and a.year>2006 = a.FirstName and a.LastName and a.ID}
+
+ii) π FirstName,LastName,ID σ Year<>2006(AllTourInfo) σ Year>2006(AllTourInfo) σ Year<2006(AllTourInfo) γ FirstName, LastName, ID, Year
+
 iii)
 SELECT FirstName, LastName, ID
 FROM AllTourInfo
@@ -95,7 +105,9 @@ Year < 2006
 ORDER BY FirstName, LastName, ID
 ___________________________________________________________
 d:
-i)
+i) {m.FirstName, m.LastName, m.ID | ∃ Member (m) AND NOT ∃(y) Year (y)
+(NOT ∃(e) Entry(e) AND e.ID = m.ID AND e.Year = y.ID)}
+
 ii)
 SELECT m.FirstName, m.LastName, m.ID
 FROM Members m
