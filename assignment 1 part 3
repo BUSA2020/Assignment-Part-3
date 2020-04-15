@@ -44,3 +44,20 @@ INSERT INTO expression VALUES
 ____
 c)
 ____  
+sort -k 1n annotation.txt
+sort -k 1n expressions.txt
+join annotation expression
+Question 2
+____
+d)
+____  
+1:
+π metabolism, σ COUNT(metabolism) > 1
+2:
+SELECT 
+metabolism,
+COUNT(metabolism)
+FROM
+expression
+GROUP BY metabolism
+HAVING COUNT(metabolism) > 1;
